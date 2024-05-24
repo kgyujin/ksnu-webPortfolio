@@ -7,13 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSection = 0;
     let isAnimating = false;
   
-    // 동적으로 페이지네이션 점 생성
     sections.forEach((section, index) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if (index === 0) dot.classList.add('active');
-      dot.setAttribute('data-index', index);
-      pagination.appendChild(dot);
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.setAttribute('data-index', index);
+        dot.setAttribute('role', 'button');
+        dot.setAttribute('aria-label', `섹션 ${index + 1}`);
+        pagination.appendChild(dot);
     });
   
     const dots = document.querySelectorAll('.dot');
@@ -70,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollToSection(currentSection);
     });
   
-    // 타이핑 애니메이션을 위한 문구 리스트
     const phrases = [
         "✍️기록하며",
         "📖배우며",
@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
     let currentPhraseIndex = 0;
   
-    // 타이핑 애니메이션 함수
     function typeWriter(text, i, fnCallback) {
         if (i < text.length) {
             dynamicText.innerHTML = text.substring(0, i + 1);
@@ -127,7 +126,5 @@ document.addEventListener('DOMContentLoaded', function() {
   
     startTextAnimation();
   
-    // 초기 설정
     scrollToSection(currentSection);
-  });
-  
+});
