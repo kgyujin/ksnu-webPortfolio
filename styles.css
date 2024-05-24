@@ -1,50 +1,161 @@
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+body {
+  font-family: 'Pretendard', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000;
+  color: #fff;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.6s ease-in-out;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  max-width: 800px;
+  width: 100%;
+}
+
+.text-content {
+  margin-right: 40px;
+  flex: 1;
+}
+
+.text-content h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  white-space: nowrap;
+}
+
+.icons {
+  margin-top: 20px;
+}
+
+.icons .icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 0;
+  transition: filter 0.3s;
+}
+
+.icons .icon:hover {
+  filter: brightness(0.7);
+}
+
+.emoji {
+  width: 45px;
+  height: 45px;
+  vertical-align: middle;
+}
+
+.profile-img {
+  max-width: 300px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.project-list {
+  display: flex;
+  gap: 20px;
+}
+
+.project {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  color: #000;
+}
+
+.pagination {
+  position: fixed;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot:hover {
+  background-color: #bbb;
+}
+
+.dot.active {
+  background-color: #ffeb3b;
+  box-shadow: 0 0 10px #ffeb3b;
+  transform: scale(1.2);
+}
+
+#contact {
+  text-align: center;
+}
+
+#contact p {
+  margin: 5px 0;
+}
+
+#dynamic-text::after {
+  content: '|';
+  animation: blink 0.7s step-end infinite;
+  color: white;
+  margin-left: 2px;
+}
+
+.blink {
+  animation: blink 0.7s step-end infinite;
+}
+
+#profile-name {
+  color: #f8f2bb;
+  text-shadow: 0 0 5px #ffeb3b83, 0 0 10px #ffeb3b83, 0 0 15px #ffeb3b83, 0 0 20px #ffeb3b83;
+  animation: neon 1.5s infinite;
+}
+
+
+@keyframes neon {
+  0%, 100% {
+    text-shadow: 0 0 5px #ffeb3b83, 0 0 10px #ffeb3b83, 0 0 15px #ffeb3b83, 0 0 20px #ffeb3b83;
   }
-  
-  body {
-    margin: 0;
-    font-family: 'Pretendard', Arial;
+  10%, 90% {
+    text-shadow: 0 0 10px #ffd90085, 0 0 20px #ffd90085, 0 0 30px #ffd90085, 0 0 40px #ffd90085;
   }
-  
-  header, footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
+  20%, 80% {
+    text-shadow: 0 0 15px #ffeb3b83, 0 0 25px #ffeb3b83, 0 0 35px #ffeb3b83, 0 0 45px #ffeb3b83;
   }
-  
-  .intro {
-    background-color: #eee;
-    padding: 2rem;
-    text-align: left;
+  30%, 70% {
+    text-shadow: 0 0 20px #ffd90085, 0 0 30px #ffd90085, 0 0 40px #ffd90085, 0 0 50px #ffd90085;
   }
-  
-  .content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
+  40%, 60% {
+    text-shadow: 0 0 25px #ffeb3b83, 0 0 35px #ffeb3b83, 0 0 45px #ffeb3b83, 0 0 55px #ffeb3b83;
   }
-  
-  .content-item {
-    background-color: #ddd;
-    width: calc(33.333% - 1rem);
-    height: 200px;
+  50% {
+    text-shadow: 0 0 30px #ffd90085, 0 0 40px #ffd90085, 0 0 50px #ffd90085, 0 0 60px #ffd90085;
   }
-  
-  @media (max-width: 768px) {
-    .content-item {
-        width: calc(50% - 1rem);
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .content-item {
-        width: 100%;
-    }
-  }
+}

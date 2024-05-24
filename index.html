@@ -3,32 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebPortfolio</title>
+    <title>포트폴리오</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        
-    </header>
+    <div class="pagination">
+        <div class="dot active" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+    </div>
 
-    <main>
-        <section class="intro">
-            <h1>안녕하세요! 👋<br>기록하며<br>성장하는<br>김규진입니다.</h1>
+    <main id="main-container">
+        <section id="about" class="section">
+            <div class="about-content">
+                <div class="text-content">
+                    <h1>
+                      안녕하세요!
+                      <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Hand%20with%20Fingers%20Splayed.png" alt="Hand with Fingers Splayed" class="emoji" />
+                      <br>
+                      <span id="dynamic-text">기록하며</span> 성장하는
+                      <br>
+                      <span id="profile-name">김규진</span>입니다.
+                    </h1>
+                    <div class="icons">
+                        <a href="https://github.com/kgyujin" target="_blank">
+                            <img src="img/logo-github.png" alt="GitHub" class="icon">
+                        </a>
+                        <a href="mailto:k_gyujin@daum.net">
+                            <img src="img/logo-email.png" alt="Email" class="icon">
+                        </a>
+                    </div>
+                </div>
+                <img src="img/profile.png" alt="프로필 사진" class="profile-img">
+            </div>
         </section>
-        <section class="content">
-            <article class="content-item"></article>
-            <article class="content-item"></article>
-            <article class="content-item"></article>
-            <article class="content-item"></article>
-            <article class="content-item"></article>
-            <article class="content-item"></article>
+        
+        <section id="projects" class="section">
+            <h2>프로젝트</h2>
+        </section>
+        
+        <section id="contact" class="section">
+            <h2>연락처</h2>
         </section>
     </main>
-
-    <footer>
-      2403122 김규진
-    </footer>
-
-    <script src="script.js"></script>
+    
+    <script src="scripts.js"></script>
 </body>
 </html>
