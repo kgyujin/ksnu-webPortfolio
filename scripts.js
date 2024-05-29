@@ -3,10 +3,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const pagination = document.querySelector('.pagination');
     const main = document.getElementById('main-container');
     const dynamicText = document.getElementById('dynamic-text');
+    const circle = document.querySelector('.circle');
     
     let currentSection = 0;
     let isAnimating = false;
-  
+
+    // 마우스 이동 이벤트
+    document.addEventListener('mousemove', function(e) {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        circle.style.transform = `translate(${mouseX - circle.offsetWidth / 2}px, ${mouseY - circle.offsetHeight / 2}px)`;
+
+        // 반전 효과를 적용할 요소들을 찾습니다.
+        const elementsToInvert = document.elementsFromPoint(mouseX, mouseY);
+
+        // 모든 요소에서 반전 효과를 제거합니다.
+        document.querySelectorAll('.reversed').forEach(element => {
+            element.classList.remove('reversed');
+        });
+
+        // 원 안에 들어가는 요소들만 반전 효과를 추가합니다.
+        elementsToInvert.forEach(element => {
+            if (element !== circle && element !== document.body) {
+                element.classList.add('reversed');
+            }
+        });
+    });
+
     sections.forEach((section, index) => {
         const dot = document.createElement('div');
         dot.classList.add('dot');
