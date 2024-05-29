@@ -8,22 +8,18 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSection = 0;
     let isAnimating = false;
 
-    // 마우스 이동 이벤트
     document.addEventListener('mousemove', function(e) {
         const mouseX = e.clientX;
         const mouseY = e.clientY;
 
         circle.style.transform = `translate(${mouseX - circle.offsetWidth / 2}px, ${mouseY - circle.offsetHeight / 2}px)`;
 
-        // 반전 효과를 적용할 요소들을 찾습니다.
         const elementsToInvert = document.elementsFromPoint(mouseX, mouseY);
 
-        // 모든 요소에서 반전 효과를 제거합니다.
         document.querySelectorAll('.reversed').forEach(element => {
             element.classList.remove('reversed');
         });
 
-        // 원 안에 들어가는 요소들만 반전 효과를 추가합니다.
         elementsToInvert.forEach(element => {
             if (element !== circle && element !== document.body) {
                 element.classList.add('reversed');
@@ -68,14 +64,20 @@ document.addEventListener('DOMContentLoaded', function() {
   
     let lastScroll = 0;
   
-    document.addEventListener('wheel', function(e) {
+    function throttle(fn, wait) {
+        let time = Date.now();
+        return function(...args) {
+            if ((time + wait - Date.now()) < 0) {
+                fn(...args);
+                time = Date.now();
+            }
+        }
+    }
+
+    document.addEventListener('wheel', throttle(function(e) {
         if (isAnimating) return;
   
         const deltaY = e.deltaY;
-        const now = new Date().getTime();
-  
-        if (now - lastScroll < 700) return;
-        lastScroll = now;
   
         if (deltaY > 0) {
             currentSection = Math.min(sections.length - 1, currentSection + 1);
@@ -83,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentSection = Math.max(0, currentSection - 1);
         }
         scrollToSection(currentSection);
-    });
+    }, 1000));
   
     document.addEventListener('keydown', function(e) {
         if (isAnimating) return;

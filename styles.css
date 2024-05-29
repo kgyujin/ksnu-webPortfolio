@@ -6,7 +6,7 @@ body {
   overflow: hidden;
   background-color: #000;
   color: #fff;
-  cursor: none; /* 기본 커서를 숨김 */
+  cursor: none;
 }
 
 #main-container {
@@ -258,7 +258,7 @@ body {
   mix-blend-mode: difference; 
   border-radius: 50%;
   will-change: transform;
-  pointer-events: none; /* 원을 클릭 불가능하게 만듦 */
+  pointer-events: none;
   z-index: 1001;
 }
 
