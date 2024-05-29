@@ -6,7 +6,7 @@ body {
   overflow: hidden;
   background-color: #000;
   color: #fff;
-  cursor: none;
+  cursor: none; /* 기본 커서를 숨김 */
 }
 
 #main-container {
@@ -131,14 +131,6 @@ body {
   transform: scale(1.2);
 }
 
-#contact {
-  text-align: center;
-}
-
-#contact p {
-  margin: 5px 0;
-}
-
 #dynamic-text::after {
   content: '|';
   animation: blink 1s step-start infinite;
@@ -258,7 +250,7 @@ body {
   mix-blend-mode: difference; 
   border-radius: 50%;
   will-change: transform;
-  pointer-events: none;
+  pointer-events: none; /* 원을 클릭 불가능하게 만듦 */
   z-index: 1001;
 }
 
@@ -282,6 +274,10 @@ body {
     left: 5%;
     width: 90%;
   }
+
+  .pagination {
+    right: 15px; /* 오른쪽 여백을 조금 더 줌 */
+  }
 }
 
 @media (max-width: 480px) {
@@ -299,11 +295,23 @@ body {
   }
 
   .pagination {
-    right: 10px;
+    right: 30px; /* 모바일에서 오른쪽 여백을 추가 */
   }
 
   .dot {
     width: 8px;
     height: 8px;
+  }
+
+  .timeline-item {
+    padding: 15px 20px;
+  }
+
+  .timeline-date {
+    font-size: 1rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem;
   }
 }
