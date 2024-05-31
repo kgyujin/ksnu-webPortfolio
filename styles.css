@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'WavvePADO-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+} 
+
 body {
   font-family: 'Pretendard', sans-serif;
   line-height: 1.6;
@@ -10,7 +17,7 @@ body {
 }
 
 a, button, .dot {
-  cursor: none; /* 링크와 버튼에서도 기본 커서 숨기기 */
+  cursor: none;
 }
 
 #main-container {
@@ -254,7 +261,7 @@ a, button, .dot {
   mix-blend-mode: difference;
   border-radius: 50%;
   will-change: transform;
-  pointer-events: none; /* circle이 이벤트를 받지 않도록 설정 */
+  pointer-events: none;
   z-index: 1001;
   transition: background-color 0.3s, border 0.3s;
 }
@@ -267,6 +274,10 @@ a, button, .dot {
 .dot:hover, a:hover {
   cursor: none;
 }
+
+.title {
+  font-family: 'WavvePADO-Regular', sans-serif;
+}  
 
 @media (max-width: 768px) {
   .about-content, .timeline-item {
