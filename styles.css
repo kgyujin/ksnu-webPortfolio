@@ -6,7 +6,11 @@ body {
   overflow: hidden;
   background-color: #000;
   color: #fff;
-  cursor: none; /* 기본 커서를 숨김 */
+  cursor: none;
+}
+
+a, button, .dot {
+  cursor: none; /* 링크와 버튼에서도 기본 커서 숨기기 */
 }
 
 #main-container {
@@ -243,15 +247,25 @@ body {
 }
 
 .circle {
-  width: 3vmax; 
-  height: 3vmax;
+  width: 1vmax;
+  height: 1vmax;
   background-color: #FFF;
   position: absolute;
-  mix-blend-mode: difference; 
+  mix-blend-mode: difference;
   border-radius: 50%;
   will-change: transform;
-  pointer-events: none; /* 원을 클릭 불가능하게 만듦 */
+  pointer-events: none; /* circle이 이벤트를 받지 않도록 설정 */
   z-index: 1001;
+  transition: background-color 0.3s, border 0.3s;
+}
+
+.circle.link-hover {
+  background-color: transparent;
+  border: 2px solid #FFF;
+}
+
+.dot:hover, a:hover {
+  cursor: none;
 }
 
 @media (max-width: 768px) {
@@ -276,7 +290,7 @@ body {
   }
 
   .pagination {
-    right: 15px; /* 오른쪽 여백을 조금 더 줌 */
+    right: 15px;
   }
 }
 
@@ -295,7 +309,7 @@ body {
   }
 
   .pagination {
-    right: 30px; /* 모바일에서 오른쪽 여백을 추가 */
+    right: 30px;
   }
 
   .dot {

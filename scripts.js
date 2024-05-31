@@ -20,11 +20,21 @@ document.addEventListener('DOMContentLoaded', function() {
             element.classList.remove('reversed');
         });
 
+        let hoverLink = false;
         elementsToInvert.forEach(element => {
             if (element !== circle && element !== document.body) {
                 element.classList.add('reversed');
             }
+            if (element.tagName === 'A' || element.closest('a') || element.classList.contains('dot')) {
+                hoverLink = true;
+            }
         });
+
+        if (hoverLink) {
+            circle.classList.add('link-hover');
+        } else {
+            circle.classList.remove('link-hover');
+        }
     });
 
     sections.forEach((section, index) => {
@@ -36,14 +46,14 @@ document.addEventListener('DOMContentLoaded', function() {
         dot.setAttribute('aria-label', `섹션 ${index + 1}`);
         pagination.appendChild(dot);
     });
-  
+
     const dots = document.querySelectorAll('.dot');
-  
+
     function updateActiveDot(index) {
         dots.forEach(dot => dot.classList.remove('active'));
         dots[index].classList.add('active');
     }
-  
+
     function scrollToSection(index) {
         if (isAnimating || index < 0 || index >= sections.length) return;
         isAnimating = true;
@@ -53,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             isAnimating = false;
         }, 700);
     }
-  
+
     dots.forEach(dot => {
         dot.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
@@ -61,9 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollToSection(index);
         });
     });
-  
+
     let lastScroll = 0;
-  
+
     function throttle(fn, wait) {
         let time = Date.now();
         return function(...args) {
@@ -76,9 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.addEventListener('wheel', throttle(function(e) {
         if (isAnimating) return;
-  
+
         const deltaY = e.deltaY;
-  
+
         if (deltaY > 0) {
             currentSection = Math.min(sections.length - 1, currentSection + 1);
         } else {
@@ -86,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         scrollToSection(currentSection);
     }, 1000));
-  
+
     document.addEventListener('keydown', function(e) {
         if (isAnimating) return;
         if (e.key === 'ArrowDown' || e.key === 'PageDown') {
@@ -96,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         scrollToSection(currentSection);
     });
-  
+
     const phrases = [
         "✍️기록하며",
         "📖배우며",
@@ -104,9 +114,9 @@ document.addEventListener('DOMContentLoaded', function() {
         "🔍탐구하며",
         "💭생각하며"
     ];
-  
+
     let currentPhraseIndex = 0;
-  
+
     function typeWriter(text, i, fnCallback) {
         if (i < text.length) {
             dynamicText.innerHTML = text.substring(0, i + 1);
@@ -117,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(fnCallback, 700);
         }
     }
-  
+
     function startTextAnimation() {
         if (currentPhraseIndex < phrases.length) {
             typeWriter(phrases[currentPhraseIndex], 0, function() {
@@ -134,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-  
+
     function deleteText(fnCallback) {
         let text = dynamicText.innerHTML;
         let i = text.length;
@@ -149,8 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         deleter();
     }
-  
+
     startTextAnimation();
-  
+
     scrollToSection(currentSection);
 });
