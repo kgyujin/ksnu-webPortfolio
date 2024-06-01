@@ -1,41 +1,67 @@
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.section');
     const pagination = document.querySelector('.pagination');
-    const main = document.getElementById('main-container');
-    const dynamicText = document.getElementById('dynamic-text');
     const circle = document.querySelector('.circle');
-    
-    let currentSection = 0;
+    const dynamicText = document.getElementById('dynamic-text');
+
+    let mouseX = 0;
+    let mouseY = 0;
     let isAnimating = false;
 
     document.addEventListener('mousemove', function(e) {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        circle.style.transform = `translate(${mouseX - circle.offsetWidth / 2}px, ${mouseY - circle.offsetHeight / 2}px)`;
-
-        const elementsToInvert = document.elementsFromPoint(mouseX, mouseY);
-
-        document.querySelectorAll('.reversed').forEach(element => {
-            element.classList.remove('reversed');
-        });
-
-        let hoverLink = false;
-        elementsToInvert.forEach(element => {
-            if (element !== circle && element !== document.body) {
-                element.classList.add('reversed');
-            }
-            if (element.tagName === 'A' || element.closest('a') || element.classList.contains('dot')) {
-                hoverLink = true;
-            }
-        });
-
-        if (hoverLink) {
-            circle.classList.add('link-hover');
-        } else {
-            circle.classList.remove('link-hover');
-        }
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        updateCirclePosition();
     });
+
+    function updateCirclePosition() {
+        circle.style.transform = `translate(${mouseX - circle.offsetWidth / 2}px, ${mouseY - circle.offsetHeight / 2}px)`;
+    }
+
+    function checkVisible(element) {
+        const rect = element.getBoundingClientRect();
+        const viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+        return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+    }
+
+    function animateSections() {
+        sections.forEach((section, index) => {
+            if (checkVisible(section)) {
+                section.classList.add('visible');
+            } else {
+                section.classList.remove('visible');
+            }
+        });
+
+        // Update the active dot based on the current scroll position
+        let currentSectionIndex = sections.length - 1;
+        for (let i = 0; i < sections.length; i++) {
+            if (checkVisible(sections[i])) {
+                currentSectionIndex = i;
+                break;
+            }
+        }
+        updateActiveDot(currentSectionIndex);
+    }
+
+    function updateActiveDot(index) {
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+    }
+
+    function scrollToSection(index) {
+        if (isAnimating || index < 0 || index >= sections.length) return;
+        isAnimating = true;
+        const section = sections[index];
+        window.scrollTo({
+            top: section.offsetTop,
+            behavior: 'smooth'
+        });
+        setTimeout(() => {
+            isAnimating = false;
+            updateActiveDot(index);
+        }, 1000);
+    }
 
     sections.forEach((section, index) => {
         const dot = document.createElement('div');
@@ -49,63 +75,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const dots = document.querySelectorAll('.dot');
 
-    function updateActiveDot(index) {
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[index].classList.add('active');
-    }
-
-    function scrollToSection(index) {
-        if (isAnimating || index < 0 || index >= sections.length) return;
-        isAnimating = true;
-        main.style.transform = `translateY(-${index * 100}vh)`;
-        updateActiveDot(index);
-        setTimeout(() => {
-            isAnimating = false;
-        }, 700);
-    }
-
     dots.forEach(dot => {
         dot.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
-            currentSection = index;
             scrollToSection(index);
         });
     });
 
-    let lastScroll = 0;
-
-    function throttle(fn, wait) {
-        let time = Date.now();
-        return function(...args) {
-            if ((time + wait - Date.now()) < 0) {
-                fn(...args);
-                time = Date.now();
-            }
-        }
-    }
-
-    document.addEventListener('wheel', throttle(function(e) {
-        if (isAnimating) return;
-
-        const deltaY = e.deltaY;
-
-        if (deltaY > 0) {
-            currentSection = Math.min(sections.length - 1, currentSection + 1);
-        } else {
-            currentSection = Math.max(0, currentSection - 1);
-        }
-        scrollToSection(currentSection);
-    }, 1000));
-
-    document.addEventListener('keydown', function(e) {
-        if (isAnimating) return;
-        if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-            currentSection = Math.min(sections.length - 1, currentSection + 1);
-        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-            currentSection = Math.max(0, currentSection - 1);
-        }
-        scrollToSection(currentSection);
-    });
+    document.addEventListener('scroll', animateSections);
+    window.addEventListener('resize', animateSections);
+    animateSections();
 
     const phrases = [
         "✍️기록하며",
@@ -161,6 +140,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     startTextAnimation();
-
-    scrollToSection(currentSection);
 });

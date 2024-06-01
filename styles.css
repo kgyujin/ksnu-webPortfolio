@@ -10,7 +10,7 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
   background-color: #000;
   color: #fff;
   cursor: none;
@@ -23,7 +23,6 @@ a, button, .dot {
 #main-container {
   display: flex;
   flex-direction: column;
-  transition: transform 0.6s ease-in-out;
 }
 
 .section {
@@ -35,15 +34,40 @@ a, button, .dot {
   text-align: center;
   padding: 20px;
   position: relative;
+  opacity: 0;
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.section h2 {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  font-size: 2rem;
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section.fade-in {
+  transform: translateY(20px);
+}
+
+.section.slide-up {
+  transform: translateY(50px);
+}
+
+.section.zoom-in {
+  transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .about-content {
@@ -257,7 +281,7 @@ a, button, .dot {
   width: 1vmax;
   height: 1vmax;
   background-color: #FFF;
-  position: absolute;
+  position: fixed;
   mix-blend-mode: difference;
   border-radius: 50%;
   will-change: transform;
