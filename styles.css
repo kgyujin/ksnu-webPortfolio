@@ -139,11 +139,18 @@ a, button, .dot {
   flex-shrink: 0;
 }
 
-.project-list {
+.project-gallery {
   display: flex;
-  flex-wrap: wrap;
+  overflow-x: hidden; /* 가로 스크롤 숨기기 */
+  scroll-behavior: smooth;
   gap: 20px;
-  justify-content: center;
+  padding: 20px 0;
+  cursor: grab;
+  width: 100%;
+}
+
+.project-gallery:active {
+  cursor: grabbing;
 }
 
 .project {
@@ -152,8 +159,13 @@ a, button, .dot {
   border-radius: 10px;
   text-align: left;
   color: #000;
-  flex: 1 1 300px;
-  box-sizing: border-box;
+  min-width: 300px;
+  flex-shrink: 0;
+}
+
+/* 스크롤바 숨기기 */
+.project-gallery::-webkit-scrollbar {
+  display: none;
 }
 
 .pagination {
@@ -431,4 +443,12 @@ a, button, .dot {
 @keyframes scrollSkills {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
+}
+
+::selection {
+  background: rgba(255, 235, 59, 0.5);
+}
+
+img {
+  -webkit-user-drag: none;
 }

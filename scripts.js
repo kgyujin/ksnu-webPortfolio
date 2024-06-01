@@ -3,10 +3,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const pagination = document.querySelector('.pagination');
     const circle = document.querySelector('.circle');
     const dynamicText = document.getElementById('dynamic-text');
-
+    const projectGallery = document.querySelector('.project-gallery');
+    
     let mouseX = 0;
     let mouseY = 0;
     let isAnimating = false;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
     document.addEventListener('mousemove', function(e) {
         mouseX = e.clientX;
@@ -168,4 +172,29 @@ document.addEventListener('DOMContentLoaded', function() {
     shuffleArray(skillsItems);
     skillsItems.forEach(item => skillsList.appendChild(item));
     animateSkills();
+
+    projectGallery.addEventListener('mousedown', (e) => {
+        isDown = true;
+        projectGallery.classList.add('active');
+        startX = e.pageX - projectGallery.offsetLeft;
+        scrollLeft = projectGallery.scrollLeft;
+    });
+
+    projectGallery.addEventListener('mouseleave', () => {
+        isDown = false;
+        projectGallery.classList.remove('active');
+    });
+
+    projectGallery.addEventListener('mouseup', () => {
+        isDown = false;
+        projectGallery.classList.remove('active');
+    });
+
+    projectGallery.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - projectGallery.offsetLeft;
+        const walk = (x - startX) * 2; // 스크롤 속도 조절
+        projectGallery.scrollLeft = scrollLeft - walk;
+    });
 });
