@@ -84,17 +84,17 @@
             <div class="introduce-content">
                 <div class="card">
                     <!-- <h3 class="card-title">소개</h3> -->
-                    <p>컴퓨터를 전공하면서 IT 분야에 대한 기존의 흥미가 더욱 깊어졌고, 개발 실력 향상을 위해 알고리즘 스터디와 세미나 등의 다양한 프로그래밍 활동에 참여했습니다.</p>
-                    <p>현재 군산대학교 소프트웨어학부(컴퓨터정보공학)에 재학 중이며 인공지능이 미래 사회에 미치는 영향에 대해 관심을 가지고 알아보고 있습니다.</p>
+                    <p>컴퓨터를 전공하면서 IT 분야에 대한 기존의 흥미가 더욱 깊어졌고, <br>개발 실력 향상을 위해 <strong>알고리즘 스터디</strong>와 <strong>세미나</strong> 등의 <strong>다양한 프로그래밍 활동</strong>에 참여했습니다.</p>
+                    <p>현재 군산대학교 소프트웨어학부(컴퓨터정보공학)에 재학 중이며 <br>인공지능이 미래 사회에 미치는 영향에 대해 관심을 가지고 알아보고 있습니다.</p>
                     <p>개발에 대한 재미에 힘입어 끊임없이 고민하고 배우며 성장하고 있습니다.</p>
                 </div>
                 <div class="card">
                     <h3 class="card-title">WORK</h3>
                     <ul class="work-list">
-                        <li>업무 효율과 편의성 향상을 추구합니다.</li>
-                        <li>과정에서의 재미를 중요시하며, 목표 달성에 집중합니다.</li>
-                        <li>문제 발생 시, 합리적인 답을 통해 해결책을 찾습니다.</li>
-                        <li>정해진 기간 준수에 노력합니다.</li>
+                        <li><strong>업무 효율</strong>과 <strong>편의성</strong> 향상을 추구합니다.</li>
+                        <li><strong>과정에서의 재미</strong>를 중요시하며, <strong>목표 달성</strong>에도 집중합니다.</li>
+                        <li><strong>문제 발생</strong> 시, <strong>합리적인 타협</strong>을 통해 <strong>해결책</strong>을 찾습니다.</li>
+                        <li><strong>정해진 기간 준수</strong>에 노력합니다.</li>
                     </ul>
                 </div>
             </div>
@@ -159,24 +159,31 @@
                 PROJECTS
             </h2>
             <div class="project-gallery">
-                <div class="project">
-                    <h3>프로젝트 1</h3>
-                    <p>프로젝트 1 설명</p>
+                <div class="project" data-project="project1">
+                    <h3>국립생태원</h3>
+                    <p>연구원들이 공지사항 및 자료를 관리하고 데이터를 효율적으로 분류 및 조회할 수 있게 지원하는 데이터 관리 웹 사이트</p>
                 </div>
-                <div class="project">
-                    <h3>프로젝트 2</h3>
-                    <p>프로젝트 2 설명</p>
+                <div class="project" data-project="project2">
+                    <h3>대구어린이세상</h3>
+                    <p>어린이와 가족들이 다양한 교육 콘텐츠와 서비스를 이용할 수 있는 웹 사이트</p>
                 </div>
-                <div class="project">
-                    <h3>프로젝트 3</h3>
-                    <p>프로젝트 3 설명</p>
+                <div class="project" data-project="project3">
+                    <h3>도서 관리 프로그램</h3>
+                    <p>사용자가 손쉽게 도서와 회원을 관리할 수 있도록 C#으로 개발된 도서 관리 프로그램</p>
                 </div>
-                <div class="project">
-                    <h3>프로젝트 4</h3>
-                    <p>프로젝트 4 설명</p>
+                <div class="project" data-project="project4">
+                    <h3>이무아</h3>
+                    <p>인공지능을 활용한 사물 인식 모바일 앱 개발</p>
                 </div>
             </div>
         </section>        
+
+        <div id="project-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div id="project-detail"></div>
+            </div>
+        </div>
     </main>
     
     <script src="scripts.js"></script>

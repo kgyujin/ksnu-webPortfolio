@@ -14,9 +14,9 @@ body {
   background-color: #000;
   color: #fff;
   cursor: none;
+  word-break: keep-all;
 }
 
-/* 스크롤바 스타일 추가 */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -141,11 +141,11 @@ a, button, .dot {
 
 .project-gallery {
   display: flex;
-  overflow-x: hidden; /* 가로 스크롤 숨기기 */
+  overflow-x: hidden;
   scroll-behavior: smooth;
   gap: 20px;
   padding: 20px 0;
-  cursor: grab;
+  cursor: pointer;
   width: 100%;
 }
 
@@ -159,11 +159,21 @@ a, button, .dot {
   border-radius: 10px;
   text-align: left;
   color: #000;
-  min-width: 300px;
+  width: 300px;
   flex-shrink: 0;
 }
 
-/* 스크롤바 숨기기 */
+.project h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.project p {
+  margin-top: 0;
+  word-wrap: break-word;
+}
+
 .project-gallery::-webkit-scrollbar {
   display: none;
 }
@@ -361,7 +371,7 @@ a, button, .dot {
   width: 1vmax;
   height: 1vmax;
   background-color: #FFF;
-  position: fixed; /* 고정 위치로 변경 */
+  position: fixed;
   mix-blend-mode: difference;
   border-radius: 50%;
   will-change: transform;
@@ -451,4 +461,53 @@ a, button, .dot {
 
 img {
   -webkit-user-drag: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 80%;
+  color: #000;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content p {
+  margin: 10px 0;
+}
+
+.modal-content h3 {
+  margin: 20px 0 10px;
 }
