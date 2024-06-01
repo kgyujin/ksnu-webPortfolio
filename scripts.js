@@ -19,6 +19,28 @@ document.addEventListener('DOMContentLoaded', function() {
         mouseX = e.clientX;
         mouseY = e.clientY;
         updateCirclePosition();
+
+        const elementsToInvert = document.elementsFromPoint(mouseX, mouseY);
+
+        document.querySelectorAll('.reversed').forEach(element => {
+            element.classList.remove('reversed');
+        });
+
+        let hoverLink = false;
+        elementsToInvert.forEach(element => {
+            if (element !== circle && element !== document.body) {
+                element.classList.add('reversed');
+            }
+            if (element.tagName === 'A' || element.closest('a') || element.classList.contains('dot') || element.classList.contains('project') || element.classList.contains('close-button')) {
+                hoverLink = true;
+            }
+        });
+
+        if (hoverLink) {
+            circle.classList.add('link-hover');
+        } else {
+            circle.classList.remove('link-hover');
+        }
     });
 
     function updateCirclePosition() {

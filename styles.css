@@ -37,7 +37,7 @@ body {
 }
 
 a, button, .dot, .project-gallery, .project, .close-button, span {
-  cursor: none;
+  cursor: none !important;
 }
 
 #main-container {
