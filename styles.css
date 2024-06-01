@@ -322,6 +322,29 @@ a, button, .dot {
   line-height: 1;
 }
 
+.skills-content {
+  width: 100%;
+  overflow: hidden;
+}
+
+.skills-content ul {
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  white-space: nowrap;
+  animation: scrollSkills 20s linear infinite;
+}
+
+.skills-content ul li {
+  flex-shrink: 0;
+}
+
+.skills-content ul li img {
+  max-height: 100px;
+}
+
 .circle {
   width: 1vmax;
   height: 1vmax;
@@ -403,4 +426,9 @@ a, button, .dot {
   .timeline-content p {
     font-size: 0.9rem;
   }
+}
+
+@keyframes scrollSkills {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }

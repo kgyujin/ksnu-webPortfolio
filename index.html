@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
     <div class="pagination" aria-label="페이지 네비게이션"></div>
@@ -37,7 +38,8 @@
             </div>
         </section>
         
-        <!-- <section id="timeline" class="section slide-up">
+        <!-- PROFILE 섹션을 주석 처리했습니다.
+        <section id="timeline" class="section slide-up">
             <h2 class="title">
                 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Briefcase.png" alt="Briefcase" class="emoji" />
                 PROFILE
@@ -71,7 +73,8 @@
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
+        -->
 
         <section id="introduce" class="section zoom-in">
             <h2 class="title">
@@ -81,8 +84,8 @@
             <div class="introduce-content">
                 <div class="card">
                     <h3 class="card-title">소개</h3>
-                    <p>컴퓨터를 전공하면서 IT 분야에 대한 기존의 흥미가 더욱 깊어졌고, <br>개발 실력 향상을 위해 알고리즘 스터디와 세미나 등의 다양한 프로그래밍 활동에 참여했습니다.</p>
-                    <p>현재 군산대학교 소프트웨어학부(컴퓨터정보공학)에 재학 중이며 <br>인공지능이 미래 사회에 미치는 영향에 대해 관심을 가지고 알아보고 있습니다.</p>
+                    <p>컴퓨터를 전공하면서 IT 분야에 대한 기존의 흥미가 더욱 깊어졌고, 개발 실력 향상을 위해 알고리즘 스터디와 세미나 등의 다양한 프로그래밍 활동에 참여했습니다.</p>
+                    <p>현재 군산대학교 소프트웨어학부(컴퓨터정보공학)에 재학 중이며 인공지능이 미래 사회에 미치는 영향에 대해 관심을 가지고 알아보고 있습니다.</p>
                     <p>개발에 대한 재미에 힘입어 끊임없이 고민하고 배우며 성장하고 있습니다.</p>
                 </div>
                 <div class="card">
@@ -103,7 +106,50 @@
                 SKILLS
             </h2>
             <div class="skills-content">
-                <p>내용</p>
+                <ul id="skills-list">
+                    <li><img src="img/skills/AndroidStudio-Light.svg" alt="AndroidStudio"></li>
+                    <li><img src="img/skills/C.svg" alt="C"></li>
+                    <li><img src="img/skills/CPP.svg" alt="CPP"></li>
+                    <li><img src="img/skills/CS.svg" alt="CS"></li>
+                    <li><img src="img/skills/CSS.svg" alt="CSS"></li>
+                    <li><img src="img/skills/DotNet.svg" alt="DotNet"></li>
+                    <li><img src="img/skills/Eclipse-Light.svg" alt="Eclipse"></li>
+                    <li><img src="img/skills/Figma-Light.svg" alt="Figma"></li>
+                    <li><img src="img/skills/Flask-Light.svg" alt="Flask"></li>
+                    <li><img src="img/skills/Gatsby.svg" alt="Gatsby"></li>
+                    <li><img src="img/skills/GCP-Light.svg" alt="GCP"></li>
+                    <li><img src="img/skills/Git.svg" alt="Git"></li>
+                    <li><img src="img/skills/Github-Light.svg" alt="Github"></li>
+                    <li><img src="img/skills/GithubActions-Light.svg" alt="GitHub Actions"></li>
+                    <li><img src="img/skills/GitLab-Light.svg" alt="GitLab"></li>
+                    <li><img src="img/skills/Gradle-Light.svg" alt="Gradle"></li>
+                    <li><img src="img/skills/HTML.svg" alt="HTMl"></li>
+                    <li><img src="img/skills/Idea-Light.svg" alt="Idea"></li>
+                    <li><img src="img/skills/Illustrator.svg" alt="Illustrator"></li>
+                    <li><img src="img/skills/Java-Light.svg" alt="Java"></li>
+                    <li><img src="img/skills/JavaScript.svg" alt="JavaScript"></li>
+                    <li><img src="img/skills/JQuery.svg" alt="JQuery"></li>
+                    <li><img src="img/skills/Linux-Light.svg" alt="Linux"></li>
+                    <li><img src="img/skills/Markdown-Light.svg" alt="Markdown"></li>
+                    <li><img src="img/skills/Maven-Light.svg" alt="Maven"></li>
+                    <li><img src="img/skills/MySQL-Light.svg" alt="MySQL"></li>
+                    <li><img src="img/skills/Netlify-Light.svg" alt="Netlify"></li>
+                    <li><img src="img/skills/PHP-Light.svg" alt="PHP"></li>
+                    <li><img src="img/skills/Postman.svg" alt="Postman"></li>
+                    <li><img src="img/skills/Python-Light.svg" alt="Python"></li>
+                    <li><img src="img/skills/PyTorch-Light.svg" alt="PyTorch"></li>
+                    <li><img src="img/skills/React-Light.svg" alt="React"></li>
+                    <li><img src="img/skills/Spring-Light.svg" alt="Spring"></li>
+                    <li><img src="img/skills/SQLite.svg" alt="SQLite"></li>
+                    <li><img src="img/skills/TensorFlow-Light.svg" alt="TensorFlow"></li>
+                    <li><img src="img/skills/Unity-Light.svg" alt="Unity"></li>
+                    <li><img src="img/skills/Vercel-Dark.svg" alt="Vercel"></li>
+                    <li><img src="img/skills/VIM-Light.svg" alt="VIM"></li>
+                    <li><img src="img/skills/VisualStudio-Light.svg" alt="VisualStudio"></li>
+                    <li><img src="img/skills/VSCode-Light.svg" alt="VSCode"></li>
+                    <li><img src="img/skills/Wordpress.svg" alt="Wordpress"></li>
+                    <li><img src="img/skills/XD.svg" alt="XD"></li>
+                </ul>
             </div>
         </section>
         

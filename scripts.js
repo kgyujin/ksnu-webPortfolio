@@ -140,4 +140,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     startTextAnimation();
+
+    // Skills Section Animation using GSAP
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    const skillsList = document.getElementById('skills-list');
+    const skillsItems = Array.from(skillsList.children);
+
+    function animateSkills() {
+        gsap.to("#skills-list", {
+            xPercent: -100 * (skillsItems.length / 4),
+            ease: "none",
+            duration: 20 * (skillsItems.length / 4),
+            onComplete: () => {
+                shuffleArray(skillsItems);
+                skillsItems.forEach(item => skillsList.appendChild(item));
+                animateSkills();
+            }
+        });
+    }
+
+    shuffleArray(skillsItems);
+    skillsItems.forEach(item => skillsList.appendChild(item));
+    animateSkills();
 });
