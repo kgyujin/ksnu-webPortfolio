@@ -36,7 +36,7 @@ body {
   background: #ffd700;
 }
 
-a, button, .dot {
+a, button, .dot, .project-gallery, .project, .close-button, span {
   cursor: none;
 }
 
