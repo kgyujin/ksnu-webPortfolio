@@ -550,3 +550,18 @@ img {
 .modal.fade-out {
   animation: fadeOut 0.5s forwards;
 }
+
+@media (max-width: 768px) {
+  .circle {
+    display: none;
+  }
+  
+  .project-gallery {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-gallery::-webkit-scrollbar {
+    display: block;
+  }
+}

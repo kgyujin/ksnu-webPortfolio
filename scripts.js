@@ -15,33 +15,39 @@ document.addEventListener('DOMContentLoaded', function() {
     let startX;
     let scrollLeft;
 
-    document.addEventListener('mousemove', function(e) {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        updateCirclePosition();
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
 
-        const elementsToInvert = document.elementsFromPoint(mouseX, mouseY);
+    if (!isMobile()) {
+        document.addEventListener('mousemove', function(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            updateCirclePosition();
 
-        document.querySelectorAll('.reversed').forEach(element => {
-            element.classList.remove('reversed');
-        });
+            const elementsToInvert = document.elementsFromPoint(mouseX, mouseY);
 
-        let hoverLink = false;
-        elementsToInvert.forEach(element => {
-            if (element !== circle && element !== document.body) {
-                element.classList.add('reversed');
+            document.querySelectorAll('.reversed').forEach(element => {
+                element.classList.remove('reversed');
+            });
+
+            let hoverLink = false;
+            elementsToInvert.forEach(element => {
+                if (element !== circle && element !== document.body) {
+                    element.classList.add('reversed');
+                }
+                if (element.tagName === 'A' || element.closest('a') || element.classList.contains('dot') || element.classList.contains('project') || element.classList.contains('close-button')) {
+                    hoverLink = true;
+                }
+            });
+
+            if (hoverLink) {
+                circle.classList.add('link-hover');
+            } else {
+                circle.classList.remove('link-hover');
             }
-            if (element.tagName === 'A' || element.closest('a') || element.classList.contains('dot') || element.classList.contains('project') || element.classList.contains('close-button')) {
-                hoverLink = true;
-            }
         });
-
-        if (hoverLink) {
-            circle.classList.add('link-hover');
-        } else {
-            circle.classList.remove('link-hover');
-        }
-    });
+    }
 
     function updateCirclePosition() {
         circle.style.transform = `translate(${mouseX - circle.offsetWidth / 2}px, ${mouseY - circle.offsetHeight / 2}px)`;
@@ -219,6 +225,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const x = e.pageX - projectGallery.offsetLeft;
         const walk = (x - startX) * 2;
         projectGallery.scrollLeft = scrollLeft - walk;
+    });
+
+    projectGallery.addEventListener('touchstart', (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - projectGallery.offsetLeft;
+        scrollLeft = projectGallery.scrollLeft;
+    });
+
+    projectGallery.addEventListener('touchmove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.touches[0].pageX - projectGallery.offsetLeft;
+        const walk = (x - startX) * 2;
+        projectGallery.scrollLeft = scrollLeft - walk;
+    });
+
+    projectGallery.addEventListener('touchend', () => {
+        isDown = false;
     });
 
     const projects = {
