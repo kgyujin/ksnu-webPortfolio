@@ -52,7 +52,7 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 80px;
+  padding: 400px;
   position: relative;
   opacity: 0;
   transition: opacity 1s ease-out, transform 1s ease-out;
