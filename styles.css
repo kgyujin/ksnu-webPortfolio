@@ -3,7 +3,7 @@
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
-} 
+}
 
 body {
   font-family: 'Pretendard', sans-serif;
@@ -144,29 +144,24 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
 }
 
 .project-gallery {
-  display: flex;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   padding: 20px 0;
   cursor: pointer;
   width: 100%;
-  flex-wrap: wrap;
   justify-content: center;
-}
-
-.project-gallery:active {
-  cursor: grabbing;
 }
 
 .project {
   position: relative;
   background-size: cover;
   background-position: center;
+  height: 200px;
   padding: 20px;
   border-radius: 10px;
   text-align: left;
   color: #fff;
-  width: 300px;
-  flex-shrink: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin: 5px;
 }
@@ -421,9 +416,19 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
 
 .title {
   font-family: 'WavvePADO-Regular', sans-serif;
-}  
+}
+
+@media (max-width: 1200px) {
+  .project-gallery {
+    grid-template-columns: repeat(2, 300px);
+  }
+}
 
 @media (max-width: 768px) {
+  .project-gallery {
+    grid-template-columns: repeat(1, 300px);
+  }
+
   .about-content, .timeline-item, .introduce-content {
     flex-direction: column;
     text-align: center;
@@ -560,6 +565,18 @@ img {
 
 .modal.fade-out {
   animation: fadeOut 0.5s forwards;
+}
+
+@media (max-width: 1200px) {
+  .project-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .project-gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
