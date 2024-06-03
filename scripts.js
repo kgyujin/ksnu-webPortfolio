@@ -277,6 +277,22 @@ document.addEventListener('DOMContentLoaded', function() {
             skills: ["Android Studio", "Java", "TensorFlow"],
             role: "애플리케이션 개발 및 구현, PPT 제작",
             review: "학습한 이미지들을 혼동하는 문제를 해결하기 위해 다량의 이미지를 학습시키고, 다양한 각도에서 사물을 인식할 수 있도록 개선"
+        },
+        project5: {
+            title: "TIL",
+            period: "2022년 7월 11일 → 2022년 8월 17일",
+            description: "일일 학습 내용을 정리하고 Contributions에 기록을 남기며 개발 의지를 고취시킨 웹 사이드 프로젝트",
+            skills: ["Node.js", "Docsify", "Markdown"],
+            role: "프로젝트 전체 기획, 개발, 배포",
+            review: "Docsify 초기 사용 시 해당 기술과 관련 문서들을 학습하고 프로젝트에 적용하는 데 시간이 필요했으나 학습 동기 유지 및 개발에 대한 열정을 높일 수 있었으며, Contributions에 기록을 남기는 부수적 효과와 각 기술에 대한 이해도 향상"
+        },
+        project6: {
+            title: "CI3 학습 노트",
+            period: "2022년 4월 28일 → 2022년 6월 23일",
+            description: "학습 내용을 체계적으로 되돌아볼 수 있는 웹 기반 학습 노트",
+            skills: ["PHP", "CodeIgniter", "XAMPP", "MySQL"],
+            role: "프로젝트 개발 및 배포, 데이터베이스 관리",
+            review: "사용자 인터페이스 사용성 개선 작업을 통해 사용자 경험 향상을 도모하고, PHP와 CodeIgniter에 대한 이해도 향상"
         }
     };
 
