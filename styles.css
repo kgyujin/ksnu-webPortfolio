@@ -46,16 +46,20 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
 }
 
 .section {
-  min-height: 35vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 400px;
+  padding: 200px;
   position: relative;
   opacity: 0;
   transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.section + .section {
+  margin-top: -300px;
 }
 
 .section.visible {
@@ -141,12 +145,12 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
 
 .project-gallery {
   display: flex;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  gap: 20px;
+  gap: 10px;
   padding: 20px 0;
   cursor: pointer;
   width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .project-gallery:active {
@@ -164,6 +168,7 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
   width: 300px;
   flex-shrink: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 5px;
 }
 
 .project:hover {
@@ -208,7 +213,7 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
-  display: flex;
+  display: none; /* pagination 페이지 네비게이션 숨김 */
   flex-direction: column;
   gap: 10px;
   z-index: 1000;
@@ -370,7 +375,7 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
 }
 
 .skills-content {
-  width: 100%;
+  width: 80%;
   overflow: hidden;
 }
 
