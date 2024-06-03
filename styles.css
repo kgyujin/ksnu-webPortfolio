@@ -36,6 +36,10 @@ body {
   background: #ffd700;
 }
 
+a { 
+  text-decoration: none;
+}
+
 a, button, .dot, .project-gallery, .project, .close-button, span {
   cursor: none !important;
 }
