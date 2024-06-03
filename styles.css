@@ -46,13 +46,13 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
 }
 
 .section {
-  min-height: 100vh;
+  min-height: 35vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 80px;
   position: relative;
   opacity: 0;
   transition: opacity 1s ease-out, transform 1s ease-out;
@@ -496,7 +496,7 @@ img {
 }
 
 .modal-content {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.85);
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
