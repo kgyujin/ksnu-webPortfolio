@@ -8,6 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeButton = document.querySelector('.close-button');
     const projectDetail = document.getElementById('project-detail');
 
+    let starCount = 100;
+
+    function setStarCount() {
+        if (window.innerWidth <= 768) {
+            starCount = 50;
+        } else {
+            starCount = 100;
+        }
+    }
+
     let mouseX = 0;
     let mouseY = 0;
     let isAnimating = false;
@@ -117,7 +127,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.addEventListener('scroll', animateSections);
-    window.addEventListener('resize', animateSections);
+    window.addEventListener('resize', () => {
+        animateSections();
+        setStarCount();
+        createStars();
+    });
     animateSections();
 
     const phrases = [
@@ -376,4 +390,27 @@ document.addEventListener('DOMContentLoaded', function() {
             openModal(project);
         });
     });
+
+    function createStars() {
+        const starContainer = document.querySelector('.star-container');
+        if (starContainer) {
+            starContainer.innerHTML = '';
+        } else {
+            const newStarContainer = document.createElement('div');
+            newStarContainer.className = 'star-container';
+            document.body.appendChild(newStarContainer);
+        }
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.animationDuration = `${Math.random() * 1.5 + 1}s`;
+            document.querySelector('.star-container').appendChild(star);
+        }
+    }
+
+    setStarCount();
+    createStars();
 });

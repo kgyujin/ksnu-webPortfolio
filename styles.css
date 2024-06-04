@@ -1,52 +1,44 @@
-@font-face {
-  font-family: 'WavvePADO-Regular';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
   font-family: 'Pretendard', sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  overflow: auto;
-  background-color: #000;
+  overflow-x: hidden;
+  background-color: #0b0b0b;
   color: #fff;
   cursor: none;
   word-break: keep-all;
+  position: relative;
+  min-height: 100vh;
 }
 
-::-webkit-scrollbar {
-  width: 12px;
+.star-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
 }
 
-::-webkit-scrollbar-track {
-  background: #333;
-  border-radius: 6px;
+.star {
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  border-radius: 50%;
+  animation: starTwinkle 2s infinite alternate;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #ffeb3b;
-  border-radius: 6px;
-  border: 3px solid #333;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #ffd700;
-}
-
-a { 
-  text-decoration: none;
-}
-
-a, button, .dot, .project-gallery, .project, .close-button, span {
-  cursor: none !important;
-}
-
-#main-container {
-  display: flex;
-  flex-direction: column;
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .section {
@@ -56,14 +48,14 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 200px;
+  padding: 100px;
   position: relative;
   opacity: 0;
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .section + .section {
-  margin-top: -300px;
+  margin-top: -150px;
 }
 
 .section.visible {
@@ -100,12 +92,24 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
 
 .about-content {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: left;
+  text-align: center;
   max-width: 800px;
   width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .about-content {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .text-content {
+    margin-right: 40px;
+    flex: 1;
+  }
 }
 
 .text-content {
@@ -117,6 +121,37 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
   margin: 0;
   font-size: 2.5rem;
   white-space: nowrap;
+}
+
+.text-content h1 span {
+  display: inline-block;
+}
+
+.profile-img {
+  max-width: 300px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .text-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .profile-img {
+    max-width: 200px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .profile-img {
+    max-width: 150px;
+  }
 }
 
 .icons {
@@ -424,13 +459,13 @@ a, button, .dot, .project-gallery, .project, .close-button, span {
 
 @media (max-width: 1200px) {
   .project-gallery {
-    grid-template-columns: repeat(2, 300px);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .project-gallery {
-    grid-template-columns: repeat(1, 300px);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .about-content, .timeline-item, .introduce-content {
