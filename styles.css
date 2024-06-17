@@ -802,3 +802,8 @@ hr::before {
 .footer-link:hover {
     background-color: #333;
 }
+
+mark {
+  background: linear-gradient(to top, #ffeb3b99 50%, transparent 50%);
+  color: #fff;
+}
