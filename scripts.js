@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectModal = document.getElementById('project-modal');
     const closeButton = document.querySelector('.close-button');
     const projectDetail = document.getElementById('project-detail');
-
+    const events = document.querySelectorAll('.timeline-event');
+    
     let starCount = 100;
 
     function setStarCount() {
@@ -58,6 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    setStarCount();
+    createStars();
 
     function updateCirclePosition() {
         circle.style.transform = `translate(${mouseX - circle.offsetWidth / 2}px, ${mouseY - circle.offsetHeight / 2}px)`;
@@ -325,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
             review: "사용자 인터페이스 사용성 개선 작업을 통해 사용자 경험 향상을 도모하고, PHP와 CodeIgniter에 대한 이해도 향상",
             images: ["img/projects/project6_1.png", "img/projects/project6_2.png"]
         }
-    };    
+    };
 
     function openModal(project) {
         let imagesHtml = '';
@@ -333,22 +337,22 @@ document.addEventListener('DOMContentLoaded', function() {
             imagesHtml = `
             <h3>관련 이미지</h3>
             <div class="images">
-            ${project.images.map(image => `<img src="${image}" alt="${project.title} 이미지" style="width: 70%;">`).join('')}
+            ${project.images.map(image => `<img src="${image}" alt="${project.title} 이미지" class="project-image">`).join('')}
             </div>
             `;
         }
-    
+
         let videoHtml = '';
         if (project.video) {
             videoHtml = `
             <h3>관련 동영상</h3>
-            <video controls style="width: 70%;">
+            <video controls class="project-video">
                 <source src="${project.video}" type="video/mp4">
                 비디오가 지원되지 않는 브라우저입니다.
             </video>
             `;
         }
-    
+
         projectDetail.innerHTML = `
             <h2>${project.title}</h2>
             <h3>기간</h3>
@@ -372,6 +376,36 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         projectModal.style.display = 'block';
     }
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+    .project-image {
+        display: block;
+        max-width: 100%;
+        max-height: 55vh;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .project-video {
+        width: 100%;
+        max-width: 600px;
+        margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+        .project-video {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .project-video {
+            width: 100%;
+        }
+    }
+    `;
+    document.head.appendChild(style);
 
     closeButton.addEventListener('click', () => {
         projectModal.style.display = 'none';
@@ -410,7 +444,4 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.star-container').appendChild(star);
         }
     }
-
-    setStarCount();
-    createStars();
 });

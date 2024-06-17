@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PORTFOILO</title>
+    <title>PORTFOLIO</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
     <div class="pagination" aria-label="페이지 네비게이션"></div>
@@ -26,6 +25,9 @@
                         <span id="profile-name">김규진</span>입니다.
                     </h1>
                     <div class="icons" aria-label="소셜 링크">
+                        <a href="https://kgyujin.tistory.com" target="_blank" aria-label="Tistory">
+                            <img src="img/logo-tistory.png" alt="Tistory" class="icon">
+                        </a>
                         <a href="https://github.com/kgyujin" target="_blank" aria-label="GitHub">
                             <img src="img/logo-github.png" alt="GitHub" class="icon">
                         </a>
@@ -38,43 +40,33 @@
             </div>
         </section>
         
-        <!--
-        <section id="timeline" class="section slide-up">
-            <h2 class="title">
+        <section id="timeline" class="section">
+            <!-- <h2 class="title">
                 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Briefcase.png" alt="Briefcase" class="emoji" />
                 PROFILE
-            </h2>
+            </h2> -->
             <div class="timeline-container">
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <div class="timeline-date">2021. 03 ~ 2023. 02</div>
-                        <div class="timeline-title">컴퓨터정보과 연구실</div>
-                    </div>
-                    <div class="timeline-content">
-                        <p>연구실에서 2년간 다양한 프로젝트를 수행하고, 팀원들과 협력하여 성과를 이루었습니다.</p>
-                    </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-year" style="left: 0%;">2020</div>
+                <div class="timeline-year" style="left: 20%;">2021</div>
+                <div class="timeline-year" style="left: 40%;">2022</div>
+                <div class="timeline-year" style="left: 60%;">2023</div>
+                <div class="timeline-year" style="left: 80%;">2024</div>
+                <div class="timeline-year" style="left: 100%;">2025</div>
+                <div class="timeline-event" style="left: 21%;" data-duration="1">
+                  <div class="timeline-dot" data-duration="1"></div>
+                  <div class="timeline-label">대학(컴퓨터정보과)</div>
                 </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <div class="timeline-date">2022. 11 ~ 2023. 11</div>
-                        <div class="timeline-title">백엔드(웹)</div>
-                    </div>
-                    <div class="timeline-content">
-                        <p>백엔드 개발자로서 웹 애플리케이션 개발과 유지보수를 담당했습니다.</p>
-                    </div>
+                <div class="timeline-event" style="left: 58%;" data-duration="2">
+                  <div class="timeline-dot" data-duration="2"></div>
+                  <div class="timeline-label">개발자(백엔드/웹)</div>
                 </div>
-                <div class="timeline-card">
-                    <div class="timeline-header">
-                        <div class="timeline-date">2024. 03 ~</div>
-                        <div class="timeline-title">소프트웨어학부 컴퓨터정보공학전공</div>
-                    </div>
-                    <div class="timeline-content">
-                        <p>현재 AI 연구실에서 연구하며, 학부 공부를 병행하고 있습니다.</p>
-                    </div>
+                <div class="timeline-event" style="left: 81%;" data-duration="3">
+                  <div class="timeline-dot" data-duration="3"></div>
+                  <div class="timeline-label">대학(소프트웨어학부 컴퓨터정보공학전공)</div>
                 </div>
-            </div>
+              </div>
         </section>
-        -->
 
         <section id="introduce" class="section zoom-in">
             <h2 class="title">
@@ -191,11 +183,19 @@
                 <div id="project-detail"></div>
             </div>
         </div>
+    
     </main>
+
+    <div class="footer">
+        <p>웹 프로그래밍 프로젝트 - 김규진</p>
+        <div class="footer-links">
+            <a href="https://github.com/kgyujin/ksnu-webPortfolio" target="_blank" class="footer-link">GitHub</a>
+        </div>
+    </div>
     
     <script src="scripts.js"></script>
     <script type="text/javascript">
         document.oncontextmenu = function(){return false;}
-    </script>     
+    </script>
 </body>
 </html>
