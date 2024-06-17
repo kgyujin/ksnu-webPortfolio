@@ -103,6 +103,12 @@ body {
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
+@media (max-width: 768px) {
+  .section {
+    padding: 70px 50px;
+  }
+}
+
 .section + .section {
   margin-top: -100px;
 }
